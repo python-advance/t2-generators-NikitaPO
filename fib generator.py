@@ -9,18 +9,22 @@
 """
 
 
-def get_fib_nums_lst(n):
+def fib_generator():
     """
     n - количество чисел в списке 
 
     """
     first, middle = 0, 1
-    for i in range(n):
-      yield first
-      third = first + middle
-      first = middle
-      middle = third
-      
-  
-print(*get_fib_nums_lst(10))
+    while True:
+        yield first
+        third = first + middle
+        first = middle
+        middle = third
 
+
+fib_lst = fib_generator()
+
+i = 0
+while i < 10:
+    print(next(fib_lst))
+    i += 1
